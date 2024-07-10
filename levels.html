@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levels</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @font-face {
+    font-family: 'Wow Dino';
+    src: url('font/WowDino-G33vP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+        body {
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: white;
+            font-family: 'Wow Dino', sans-serif;
+            background-image: url(images/bgindex.png);
+        }
+
+        .level-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 80%;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px yellow;
+        }
+
+        .level {
+            display: none;
+            text-align: center;
+        }
+
+        .level.active {
+            display: block;
+        }
+
+        .level img {
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+
+        .arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .arrow {
+            cursor: pointer;
+            font-size: 2em;
+            color: white;
+            user-select: none;
+        }
+
+        .level-name {
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="level-container">
+        <div class="arrows">
+            <div class="arrow" id="prev">&#10094;</div>
+            <div class="arrow" id="next">&#10095;</div>
+        </div>
+        <div class="level active" id="level1">
+            <img src="images/level1.png" alt="Level 1">
+            <div class="level-name">Bronze (0 - 999,999)</div>
+        </div>
+        <div class="level" id="level2">
+            <img src="images/level2.png" alt="Level 2">
+            <div class="level-name">Silver (1M - 2,499,999)</div>
+        </div>
+        <div class="level" id="level3">
+            <img src="images/level3.png" alt="Level 3">
+            <div class="level-name">Gold (2.5M - 4,999,999)</div>
+        </div>
+        <div class="level" id="level4">
+            <img src="images/level4.png" alt="Level 4">
+            <div class="level-name">Platinum (5M - 9,999,999)</div>
+        </div>
+        <div class="level" id="level5">
+            <img src="images/level5.png" alt="Level 5">
+            <div class="level-name">Diamond (10M - 14,999,999)</div>
+        </div>
+        <div class="level" id="level6">
+            <img src="images/level6.png" alt="Level 6">
+            <div class="level-name">Master (15M - 19,999,999)</div>
+        </div>
+        <div class="level" id="level7">
+            <img src="images/level7.png" alt="Level 7">
+            <div class="level-name">Grandmaster (20M - 29,999,999)</div>
+        </div>
+        <div class="level" id="level8">
+            <img src="images/level8.png" alt="Level 8">
+            <div class="level-name">Legendary (30M - 39,999,999)</div>
+        </div>
+        <div class="level" id="level9">
+            <img src="images/level9.png" alt="Level 9">
+            <div class="level-name">Mythic (40M - 49,999,999)</div>
+        </div>
+        <div class="level" id="level10">
+            <img src="images/level10.png" alt="Level 10">
+            <div class="level-name">Ultimate (50M+)</div>
+        </div>
+    </div>
+     <!-- Footer Section -->
+     <div class="footer-section">
+        <div class="footer-icons">
+            <div class="footer-icon">
+                <a href="mining.html">
+            <img src="images/tap.png" alt="Tap">
+            <span>Tap Tap</span>
+            </a>
+            </div>
+            <div class="footer-icon">
+                <img src="images/farm.png" alt="Farm">
+                <span>Farm</span>
+            </div>
+            <div class="footer-icon">
+                <a href="teamup.html">
+                <img src="images/friends.png" alt="Friends">
+                <span>Team Up</span>
+            </a>
+            </div>
+            <div class="footer-icon">
+                <a href="tasks.html">
+                <img src="images/task.png" alt="Tasks">
+                <span>Tasks</span>
+            </a>
+            </div>
+            <div class="footer-icon">
+                <a href="airdrop.html">
+                    <img src="images/airdrop.png" alt="Airdrop">
+                <span>Airdrop</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="script.js"></script>
+    <script>
+        let currentLevel = 1;
+        const totalLevels = 10;
+
+        document.getElementById('next').addEventListener('click', function() {
+            document.getElementById(`level${currentLevel}`).classList.remove('active');
+            currentLevel = (currentLevel % totalLevels) + 1;
+            document.getElementById(`level${currentLevel}`).classList.add('active');
+        });
+
+        document.getElementById('prev').addEventListener('click', function() {
+            document.getElementById(`level${currentLevel}`).classList.remove('active');
+            currentLevel = (currentLevel - 2 + totalLevels) % totalLevels + 1;
+            document.getElementById(`level${currentLevel}`).classList.add('active');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Dolphin Splash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/wow-dino" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+
+</head>
+<style>
+@font-face {
+    font-family: 'Wow Dino';
+    src: url('font/WowDino-G33vP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Wow Dino', sans-serif;
+    padding: 0;
+    background: url('images/bgindex.png');
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.get-started-container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 20px yellow;
+}
+
+/* Header Styles */
+.header h1 {
+    font-family: 'Wow Dino', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    animation: colorChange 5s infinite;
+    color: yellow;
+}
+
+.header p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Content Styles */
+.get-started-card {
+    background: rgba(233, 218, 80, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px yellow;
+    margin-bottom: 20px;
+}
+
+.get-started-card h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: yellow;
+}
+
+.get-started-card p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.get-started-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background: linear-gradient(yellow, black);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.get-started-button:hover {
+    background: #0ff;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    font-family: 'Bangers', cursive;
+    font-size: 1em;
+    padding: 10px;
+    width: calc(100% - 20px);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.5);
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Footer Styles */
+.footer p {
+    font-size: 0.8em;
+}
+
+/* Animation */
+@keyframes colorChange {
+    0% { color: yellow; }
+    50% { color: #0ff; }
+    100% { color: yellow; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .header p, .get-started-card p {
+        font-size: 1em;
+    }
+
+    .get-started-card h2 {
+        font-size: 1.5em;
+    }
+
+    .get-started-button {
+        padding: 8px 16px;
+        margin: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .header p, .get-started-card p {
+        font-size: 0.9em;
+    }
+
+    .get-started-card h2 {
+        font-size: 1.2em;
+    }
+
+    .get-started-button {
+        padding: 6px 12px;
+        margin: 6px;
+    }
+}
+
+
+</style>
+<body>
+    <body>
+        <div class="get-started-container">
+            <header class="header">
+                <h1 id="animated-text">Welcome to Dolphin Splash</h1>
+                <p>Your gateway to the most exciting crypto adventures!</p>
+            </header>
+            <div class="content">
+                <div class="get-started-card">
+                    <h2>Get Started</h2>
+                    <p>Join us in just a few easy steps and dive into the world of Dolphin Splash!</p>
+                    <p>Please enter your details to continue</p>
+                    <form id="login-form" action="script.php" method="post">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        </div>
+                        <a href="mining.html">
+                        <button type="submit" class="get-started-button">Click me</button>
+                    </a>
+                    </form>
+                    
+                </div>
+            </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const textElement = document.getElementById("animated-text");
+    const text = "Welcome to Dolphin Splash";
+    const typingSpeed = 100; // Adjust typing speed (in milliseconds)
+    const pauseTime = 500; // Pause time between animation cycles (in milliseconds)
+
+    function typeWriter(text, i, callback) {
+        if (i < text.length) {
+            textElement.innerHTML = text.substring(0, i + 1) + '<span aria-hidden="true"></span>';
+            setTimeout(function() {
+                typeWriter(text, i + 1, callback);
+            }, typingSpeed);
+        } else if (typeof callback === 'function') {
+            setTimeout(callback, pauseTime);
+        }
+    }
+
+    function startAnimation() {
+        typeWriter(text, 0, function() {
+            setTimeout(startAnimation, pauseTime);
+        });
+    }
+
+    startAnimation();
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        const username = document.getElementById('username').value;
+
+        // Store the username locally (optional, for client-side persistence)
+        localStorage.setItem('username', username);
+
+        // After storing locally, submit the form to store in database
+        loginForm.submit(); // This submits the form to store_username.php
+    });
+});
+
+});
+
+
+
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

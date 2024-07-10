@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - Dolphin Splash</title>
+    <style>
+        /* General Styles */
+        @font-face {
+    font-family: 'Wow Dino';
+    src: url('font/WowDino-G33vP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+        body {
+            font-family: 'Wow Dino', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000, #002244);
+            color: #fff;
+            background-image: url(images/bgindex.png);
+        }
+
+        .container {
+            padding: 20px;
+            box-shadow:yellow ;
+        }
+
+        /* Task Section Styles */
+        .task-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .task-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .task-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .task-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow:yellow ;
+        }
+
+        .task-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .task-card p {
+            font-size: 1em;
+        }
+
+        .task-card .status-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5em;
+            color: transparent;
+            transition: color 0.3s ease;
+        }
+
+        .task-card.done {
+            box-shadow: 0 0 15px 5px green;
+        }
+
+        .task-card.done .status-icon {
+            color: green;
+        }
+
+        .task-card .start-button {
+            background: linear-gradient(yellow,black);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 7px;
+        }
+
+        .task-card .start-button:hover {
+            background-color: #0f5ba3;
+        }
+
+        /* Hover effect */
+        .task-card:hover {
+            box-shadow: 0 0 15px 5px #1a73e8;
+        }
+
+        /* Points Earned Styles */
+        .points-earned {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .points-earned img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Task Section -->
+        <div class="task-section">
+            <h1>Social Media Tasks</h1>
+            <div class="task-list" id="task-list">
+                <div class="task-card" data-task="twitter">
+                    <h2>Follow us on Twitter</h2>
+                    <p>Follow our Twitter account to stay updated.</p>
+                    <button class="start-button" onclick="startTask('https://twitter.com/youraccount', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="instagram">
+                    <h2>Follow us on Instagram</h2>
+                    <p>Follow our Instagram for the latest updates.</p>
+                    <button class="start-button" onclick="startTask('https://instagram.com/youraccount', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="facebook">
+                    <h2>Like our Facebook Page</h2>
+                    <p>Like our Facebook page to stay connected.</p>
+                    <button class="start-button" onclick="startTask('https://facebook.com/youraccount', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="youtube">
+                    <h2>Subscribe to our YouTube Channel</h2>
+                    <p>Subscribe to our YouTube channel for videos.</p>
+                    <button class="start-button" onclick="startTask('https://youtube.com/youraccount', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="invite">
+                    <h2>Invite Friends</h2>
+                    <p>Invite your friends to join and earn rewards.</p>
+                    <button class="start-button" onclick="startTask('https://yourinvitepage.com', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="telegram">
+                    <h2>Join our Telegram Channel</h2>
+                    <p>Join our Telegram channel for instant updates.</p>
+                    <button class="start-button" onclick="startTask('https://telegram.me/yourchannel', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="linkedin">
+                    <h2>Follow us on LinkedIn</h2>
+                    <p>Follow our LinkedIn for professional updates.</p>
+                    <button class="start-button" onclick="startTask('https://linkedin.com/company/youraccount', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="medium">
+                    <h2>Follow us on Medium</h2>
+                    <p>Follow our Medium blog for in-depth articles.</p>
+                    <button class="start-button" onclick="startTask('https://medium.com/@youraccount', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="discord">
+                    <h2>Join our Discord Server</h2>
+                    <p>Join our Discord community for discussions.</p>
+                    <button class="start-button" onclick="startTask('https://discord.com/invite/yourserver', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="task-card" data-task="reddit">
+                    <h2>Join our Reddit Community</h2>
+                    <p>Join our subreddit for community discussions.</p>
+                    <button class="start-button" onclick="startTask('https://reddit.com/r/yourcommunity', this)">Start</button>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Points Earned -->
+        <div class="points-earned">
+            <img src="images/coin.png" alt="Coin">
+            <span id="total-points">Earn 0 points</span>
+        </div>
+    </div>
+
+    <script>
+        function startTask(url, button) {
+            window.open(url, '_blank');
+
+            // Simulate verification process
+            setTimeout(() => {
+                // This is where you would implement the actual verification logic
+                const card = button.parentElement;
+                card.classList.add('done');
+
+                // Update points
+                const totalPoints = document.getElementById('total-points');
+                let currentPoints = parseInt(totalPoints.textContent.match(/\d+/)[0]);
+                currentPoints += 1000;
+                totalPoints.textContent = `Earn ${currentPoints} points`;
+
+                // Save state to localStorage (for demonstration purposes)
+                const taskName = card.dataset.task;
+                localStorage.setItem(taskName, 'done');
+            }, 1000);
+        }
+
+        // Restore completed tasks on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.task-card');
+            const totalPoints = document.getElementById('total-points');
+            let currentPoints = 0;
+
+            cards.forEach(card => {
+                const taskName = card.dataset.task;
+                if (localStorage.getItem(taskName) === 'done') {
+                    card.classList.add('done');
+                    currentPoints += 1000;
+                }
+            });
+
+            totalPoints.textContent = `Earn ${currentPoints} points`;
+        });
+    </script>
+</body>
+</html>

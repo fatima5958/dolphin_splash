@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolphin Splash</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        @font-face {
+            font-family: 'Wow Dino';
+            src: url('font/WowDino-G33vP.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Wow Dino', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Section -->
+        <div class="top-section">
+            <!-- Account Info Card -->
+            <div class="card">
+                <div class="account-info">
+                    <span id="username">Username</span>
+                    <span id="level-name">Level: Bronze</span>
+                    <div class="balance-card">
+                        <img src="images/coin.png" alt="Coin" class="coin-icon">
+                        <span class="balance-amount" id="balance-amount">0</span>
+                    </div>
+                    <div class="header-gradient">
+                        <div class="level-indicator" id="levelIndicator"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Dolphin Splash -->
+            <div class="card dolphin-splash">
+                <div class="dolphin-splash-name">Dolphin Splash</div>
+                <div class="daily-quote">
+                    <p id="daily-quote-text">"Daily Inspirational Quote"</p>
+                </div>
+            </div>
+            <!-- Settings and Wallet Card -->
+            <div class="card settings-wallet">
+                <img src="images/setting.png" alt="Settings" class="settings-icon" onclick="toggleSettings()">
+                <img src="images/wallet.png" alt="Wallet" class="wallet-icon" onclick="showComingSoonPrompt()">
+                <span class="coming-soon">Coming Soon</span>
+            </div>
+        </div>
+        <!-- Middle Section -->
+        <div class="middle-section">
+            <div class="toolbar">
+                <div class="toolbar-item" id="boost">
+                    <a href="boost.html">
+                        <img src="images/boost.png" alt="Boost">
+                        <span class="tooltip">Boost</span>
+                    </a>
+                </div>
+                <div class="toolbar-item" id="levels">
+                    <a href="levels.html">
+                        <img src="images/levels.png" alt="Levels">
+                        <span class="tooltip">Levels</span>
+                    </a>
+                </div>
+            </div>
+            <div class="dolphin-button-container">
+                <button id="dolphin-button">
+                    <img src="images/coin.png" alt="Dolphin">
+                </button>
+                <div id="coin-animation" class="coin-animation">+1</div>
+                <div class="tap-info">
+                    <p>Taps left: <span id="taps-left">0</span></p>
+                    <p>Next reset: <span id="reset-timer">00:00:00</span></p>
+                </div>
+            </div>
+            <div class="level-info">
+                <span class="level-name">Level: Bronze</span>
+            </div>
+        </div>
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-icons">
+                <a href="mining.html" class="footer-icon">
+                    <img src="images/tap.png" alt="Tap">
+                    <span>Tap Tap</span>
+                </a>
+                <a href="farming.html" class="footer-icon">
+                    <img src="images/farm.png" alt="Farm">
+                    <span>Farm</span>
+                </a>
+                <a href="teamup.html" class="footer-icon">
+                    <img src="images/friends.png" alt="Friends">
+                    <span>Team Up</span>
+                </a>
+                <a href="tasks.html" class="footer-icon">
+                    <img src="images/task.png" alt="Tasks">
+                    <span>Tasks</span>
+                </a>
+                <a href="airdrop.html" class="footer-icon">
+                    <img src="images/airdrop.png" alt="Airdrop">
+                    <span>Airdrop</span>
+                </a>
+            </div>
+        </div>
+        <!-- Settings Modal -->
+        <div id="settings-modal" class="settings-modal">
+            <div class="settings-content">
+                <h2>Settings</h2>
+                <div class="settings-option">
+                    <label for="dark-mode-toggle">Dark Mode</label>
+                    <input type="checkbox" id="dark-mode-toggle">
+                </div>
+                <div class="settings-option">
+                    <label for="sound-toggle">Sound</label>
+                    <input type="checkbox" id="sound-toggle">
+                </div>
+                <button onclick="closeSettings()">Close</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

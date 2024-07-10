@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airdrop Section - Dolphin Splash</title>
+    <style>
+        /* General Styles */
+        @font-face {
+            font-family: 'Wow Dino';
+            src: url('font/WowDino-G33vP.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Wow Dino', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000, #002244);
+            color: #fff;
+            background-image:url(images/bgindex.png) ;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        /* Airdrop Section Styles */
+        .airdrop-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .airdrop-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .roadmap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .roadmap-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: yellow;
+        }
+
+        .roadmap-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .roadmap-card p {
+            font-size: 1em;
+        }
+
+        .roadmap-card .status-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5em;
+            color: transparent;
+            transition: color 0.3s ease;
+        }
+
+        .roadmap-card.done {
+            box-shadow: 0 0 15px 5px green;
+        }
+
+        .roadmap-card.done .status-icon {
+            color: green;
+        }
+
+        /* Hover effect */
+        .roadmap-card:hover {
+            box-shadow: 0 0 15px 5px #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+         <!-- Airdrop Section -->
+         <div class="airdrop-section">
+            <h1>Airdrop Roadmap</h1>
+            <div class="roadmap" id="roadmap">
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 1: Registration</h2>
+                    <p>Register on the platform to be eligible for the airdrop.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 2: KYC Verification</h2>
+                    <p>Complete the KYC verification process to secure your participation.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 3: Wallet Integration</h2>
+                    <p>Connect your crypto wallet to receive your tokens.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 4: Initial Token Distribution</h2>
+                    <p>Receive your initial airdrop tokens.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 5: Referral Program</h2>
+                    <p>Invite friends and earn additional tokens through our referral program.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 6: Community Engagement</h2>
+                    <p>Participate in community events and discussions to earn rewards.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 7: Beta Testing</h2>
+                    <p>Join the beta testing of our app and provide valuable feedback.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 8: Official Launch</h2>
+                    <p>Celebrate the official launch of our platform.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 9: Continuous Improvement</h2>
+                    <p>Enjoy continuous updates and improvements based on your feedback.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+                <div class="roadmap-card" data-done="false">
+                    <h2>Phase 10: Global Expansion</h2>
+                    <p>Join us as we expand our platform to a global audience.</p>
+                    <span class="status-icon">&#10004;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const roadmapCards = document.querySelectorAll('.roadmap-card');
+
+            roadmapCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('done');
+                    const isDone = card.classList.contains('done');
+                    card.dataset.done = isDone;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

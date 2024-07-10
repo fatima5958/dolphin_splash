@@ -1,0 +1,416 @@
+/* styles.css */
+@font-face {
+    font-family: 'Wow Dino';
+    src: url('font/WowDino-G33vP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Wow Dino', sans-serif;
+    margin: 0;
+    background-image: url(images/bgindex.png);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    padding: 0 10px; /* Adjust padding for better responsiveness */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Adjust padding for better responsiveness */
+    background: linear-gradient(135deg, #000000, #0f042b);
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(255, 255, 0, 0.7); /* Adjust shadow color */
+    width: 100%; /* Ensure full width */
+}
+
+.card {
+    flex: 1;
+    padding: 10px; /* Adjust padding for better responsiveness */
+    background-color: rgba(51, 51, 51, 0.8); /* Transparent background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 0, 0.7); /* Adjust shadow color */
+    margin-right: 10px;
+}
+
+.account-info,
+.settings-wallet {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.balance-card,
+.icon-group {
+    display: flex;
+    align-items: center;
+    background: #444;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.coin-icon,
+.icon-group img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin-right: 10px;
+}
+
+.balance-amount {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: gold; /* Adjust color as needed */
+}
+
+.header-gradient {
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right, #ff5733, #ffc300, #daf7a6, #9bf6ff, #9b59b6);
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+}
+
+.level-indicator {
+    height: 100%;
+    width: 50%; /* Adjust width as needed */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+    transition: width 0.3s ease-out;
+}
+
+.dolphin-splash {
+    text-align: center;
+    flex: 1;
+}
+
+.dolphin-splash-name {
+    font-size: 2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.daily-quote {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #ccc;
+    animation: splash 3s infinite;
+}
+
+@keyframes splash {
+    50% {
+        color: #4e1010;
+    }
+}
+
+.settings-wallet .icon-group,
+.settings-icon,
+.wallet-icon,
+.icon-group img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.settings-wallet .icon-group,
+.settings-icon:hover,
+.wallet-icon:hover,
+.icon-group img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.coming-soon {
+    color: #ccc;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.coming-soon:hover {
+    color: #fff;
+}
+.middle-section {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:url(bg.gif);
+    background-size: cover;
+    width:100vw;
+    background-position:center;
+    box-shadow: 0 4px 8px rgba(228, 231, 22, 0.7); /* Dark green shadow effect */
+    position: relative;
+   
+}
+.toolbar {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar-item {
+    margin-bottom: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.toolbar-item:hover {
+    transform: translateX(10px);
+}
+
+.toolbar-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff; /* Adjust background color */
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example shadow effect */
+}
+
+.tooltip {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent black background */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.toolbar-item:hover .tooltip {
+    opacity: 1;
+}
+
+
+
+.balance {
+display: flex;
+align-items: center;
+}
+
+.coin-icon {
+width: 30px;
+margin-right: 10px;
+}
+
+.balance-amount {
+font-size: 1.5em;
+}
+
+.daily-quote {
+text-align: center;
+flex-grow: 1;
+}
+
+#daily-quote-text {
+font-size: 1.2em;
+}
+
+.settings {
+display: flex;
+align-items: center;
+}
+
+.settings-icon {
+width: 30px;
+}
+
+.dolphin-button-container {
+position: relative;
+}
+
+#dolphin-button {
+background: none;
+border: none;
+cursor: pointer;
+}
+
+#dolphin-button img {
+width: 400px;
+
+}
+
+.coin-animation {
+position: absolute;
+top: -30px;
+left: 50%;
+transform: translateX(-50%);
+font-size: 1.5em;
+opacity: 0;
+transition: opacity 0.5s, top 0.5s;
+}
+
+@keyframes rotate {
+from {
+transform: rotate(0deg);
+}
+to {
+transform: rotate(360deg);
+}
+}
+
+.level-info {
+margin-top: 20px;
+font-size: 1.2em;
+}
+
+.mining-screen {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100vh;
+background: linear-gradient(135deg, #1e1e1e, #3b3b3b);
+color: #fff;
+position: relative;
+}
+.footer-section {
+    position: fixed; /* Fixed positioning */
+    bottom: 0; /* Stick to the bottom of the viewport */
+    left: 0;
+    width: 100%; /* Full width */
+    background-color: #000000; /* Background color */
+    padding: 10px 0; /* Padding for spacing */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
+    display: flex; /* Ensure items stay in a row */
+    justify-content: space-around; /* Distribute items evenly */
+    align-items: center; /* Center items vertically */
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    width: 100%; /* Full width */
+}
+
+.footer-icon {
+    flex: 1; /* Allow icons to grow and shrink equally */
+    text-align: center; /* Center align icon and text */
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.footer-icon img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+}
+
+.footer-icon span {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #ccc;
+    font-weight: bold;
+}
+
+/* Hover Animations */
+.footer-icon:hover {
+    transform: scale(1.1);
+}
+
+.footer-icon:hover span {
+    color: #1a73e8;
+}
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  
+        .top-section .card {
+            padding: 5px; /* Reduce padding */
+        }
+    
+        .balance-card .balance-amount,
+        .icon-group img {
+            font-size: 1.2em; /* Reduce font size */
+            width: 30px; /* Reduce image size */
+            height: 30px; /* Reduce image size */
+        }
+        .middle-section {
+            padding: 10px;
+        }
+    
+        .dolphin-button-container {
+            height: 150px; /* Adjust height for smaller screens */
+        }
+    
+        #dolphin-button {
+            width: 100px; /* Adjust size for mobile */
+            height: 100px; /* Adjust size for mobile */
+        }
+    
+        #dolphin-button img {
+            width: 300px; /* Adjust size for mobile */
+            height: 300px; /* Adjust size for mobile */
+        }
+    
+        .daily-quote {
+            font-size: 0.8em; /* Reduce font size */
+        }
+    
+        
+    
+        .level-info {
+            font-size: 1em; /* Adjust font size for smaller screens */
+        }
+        .middle-section {
+            text-align: center; /* Center align content */
+        }
+    
+        #dolphin-image {
+            width: 300px; /* Adjust size of dolphin image */
+            height: 300px;
+            display: block; /* Ensure it behaves as a block element */
+            margin: 0 auto; /* Center the image horizontally */
+        }
+    
+        .tooltip-icons {
+            display: flex;
+            justify-content: space-between; /* Space icons evenly */
+            margin-top: 20px; /* Adjust spacing */
+        }
+    
+        .tooltip-icon {
+            width: 20px; /* Adjust size of tooltip icons */
+            height: 20px;
+        }
+    
+        .tooltip-icon img {
+            width: auto; /* Ensure image fills the icon container */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .footer-icon img {
+            width: 30px; /* Adjust size for mobile */
+            height: 30px; /* Adjust size for mobile */
+        }
+    
+        .footer-icon span {
+            font-size: 0.7em; /* Reduce font size */
+        }
+    
+    }
+    
+    
+    

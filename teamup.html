@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnH2N2d2oPf+5m/2ZT1E6/93fZfH2kxg8oY5w5w5LjN1p2oEkl9l7gUBlPCTAA2e5lEt1wWg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="styles.css">
+    <title>Team Up - Dolphin Splash</title>
+    <style>
+          @font-face {
+    font-family: 'Wow Dino';
+    src: url('font/WowDino-G33vP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+        /* General Styles */
+        body {
+            font-family: 'Wow Dino', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000, #002244);
+            color: #fff;
+            background-image: url(images/bgindex.png);
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        /* Invite Section Styles */
+        .invite-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .invite-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .invite-link {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #fff;
+            border-radius: 10px;
+            padding: 15px;
+            width: 80%;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .invite-link input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 85%;
+            font-size: 1em;
+        }
+
+        .invite-link button {
+            background: linear-gradient(135deg, yellow,black);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .invite-link button:hover {
+            background-color: #0f5ba3;
+        }
+
+        /* Friends List Styles */
+        .friends-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .friend-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            position: relative;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: yellow;
+        }
+
+        .friend-card h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .friend-card p {
+            font-size: 1em;
+        }
+
+        .friend-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .points-earned {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .points-earned img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .points-earned span {
+            font-size: 1.2em;
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .share-buttons a {
+            color: #fff;
+            font-size: 1.5em;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            background:linear-gradient(black,yellow);
+        }
+        .claim-button {
+        background: linear-gradient(45deg, #ff007f, #ff00ff);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+    .claim-button:hover {
+        background: linear-gradient(45deg, #ff0055, #ff00cc);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Invite Section -->
+        <div class="invite-section">
+            <h1>Invite Friends</h1>
+            <div class="invite-link">
+                <input type="text" id="invite-link" readonly>
+                <button onclick="copyInviteLink()">Copy link</button>
+            </div>
+            <div class="share-buttons">
+                <a href="#" id="share-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#" id="share-twitter"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#" id="share-facebook"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" id="share-instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" id="share-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+            <button class="claim-button" onclick="claimCoins()">Claim Coins</button>
+            <div class="points-earned">
+                <img src="coin.png" alt="Coin">
+                <span>Earn 10,000 points per friend</span>
+            </div>
+        </div>
+
+        <!-- Friends List Section -->
+        <div class="friends-list" id="friends-list">
+            <!-- Friend cards will be appended here -->
+        </div>
+    </div>
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function () {
+    const userId = generateUniqueId();
+    const inviteLinkInput = document.getElementById('invite-link');
+    const inviteLink = `https://dolphinsplash.com/invite/${userId}`;
+    inviteLinkInput.value = inviteLink;
+
+    document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=Join me on Dolphin Splash! ${inviteLink}`;
+    document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=Join me on Dolphin Splash! ${inviteLink}`;
+    document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${inviteLink}`;
+    document.getElementById('share-instagram').href = `https://www.instagram.com/?url=${inviteLink}`;
+    document.getElementById('share-linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${inviteLink}`;
+
+    addFriends(getFriendsData());
+
+    localStorage.setItem('inviteLink', inviteLink);
+    localStorage.setItem('userId', userId);
+});
+
+function claimCoins() {
+    const claimedCoins = 10000;
+    let balance = parseInt(localStorage.getItem('balance'), 10) || 0;
+    balance += claimedCoins;
+    localStorage.setItem('balance', balance);
+
+    alert(`You've claimed ${claimedCoins} coins! Your new balance is ${balance}`);
+}
+
+        // Function to generate unique invite link
+        function generateUniqueId() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        // Function to copy the invite link to clipboard
+        function copyInviteLink() {
+            const inviteLinkInput = document.getElementById('invite-link');
+            inviteLinkInput.select();
+            inviteLinkInput.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand('copy');
+            alert("Invite link copied: " + inviteLinkInput.value);
+        }
+
+        // Example friend data
+        function getFriendsData() {
+            // Simulate fetching data from the backend
+            const friendsData = [
+                { name: "John Doe", balance: 5000, img: "friend1.jpg", level: 3 },
+                { name: "Jane Smith", balance: 8000, img: "friend2.jpg", level: 5 },
+                { name: "Mike Johnson", balance: 12000, img: "friend3.jpg", level: 7 }
+            ];
+            return friendsData;
+        }
+
+        // Function to add friends to the friends list
+        function addFriends(friends) {
+            const friendsList = document.getElementById('friends-list');
+            friends.forEach(friend => {
+                const friendCard = document.createElement('div');
+                friendCard.classList.add('friend-card');
+                friendCard.innerHTML = `
+                    <img src="${friend.img}" alt="${friend.name}">
+                    <h2>${friend.name}</h2>
+                    <p>Balance: ${friend.balance.toLocaleString()}</p>
+                    <p>Level: ${friend.level}</p>
+                `;
+                friendsList.appendChild(friendCard);
+            });
+        }
+    </script>
+</body>
+</html>

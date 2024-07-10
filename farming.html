@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+    <title>Farming Page</title>
+    <style>
+        @font-face {
+    font-family: 'Wow Dino';
+    src: url('font/WowDino-G33vP.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+        body {
+            font-family: 'Wow Dino', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #000428, #004e92);
+            color: white;
+            background-image: url(images/bgindex.png);
+        }
+
+        .container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 40px; /* Increase padding for more space */
+    box-shadow: 0 4px 8px yellow;
+    max-width: 600px; /* Increase max-width for wider container */
+    width: 100%;
+}
+
+.farm-button {
+    display: inline-block;
+    width: 400px; /* Increase button size */
+    height: 400px; /* Increase button size */
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    border: none;
+    outline: none;
+}
+
+.farm-button img {
+    width: 150px; /* Increase dolphin image size */
+    height: 150px; /* Increase dolphin image size */
+    margin-top: 25px; /* Adjust margin for positioning */
+    transition: transform 0.3s ease-out;
+    animation: rotateAnimation 2s linear infinite;
+}
+
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            font-size: 20px;
+        }
+
+        .claim-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            margin-top: 20px;
+        }
+
+        @keyframes rotateAnimation {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .coin {
+            position: absolute;
+            top: -20px;
+            left: calc(50% - 10px);
+            width: 20px;
+            height: 20px;
+            background-color: gold;
+            border-radius: 50%;
+            animation: coinFall 2s linear infinite;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        @keyframes coinFall {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="button-container">
+            <button class="farm-button" id="farmButton" onclick="startFarming()">
+                <img src="images/coin.png" alt="Dolphin">
+                <div class="coin"></div>
+            </button>
+        </div>
+        <div class="message" id="farmingMessage">Tap the button to start farming!</div>
+        <div class="timer" id="timer"></div>
+        <button class="claim-button" id="claimButton" onclick="claimRewards()">Claim</button>
+    </div>
+    <!-- Footer Section -->
+    <div class="footer-section">
+        <div class="footer-icons">
+            <div class="footer-icon">
+                <a href="mining.html">
+                    <img src="images/tap.png" alt="Tap">
+                    <span>Tap Tap</span>
+                </a>
+            </div>
+            <div class="footer-icon">
+                <a href="farming.html">
+                <img src="images/farm.png" alt="Farm">
+                <span>Farm</span>
+            </a>
+            </div>
+            <div class="footer-icon">
+                <a href="teamup.html">
+                    <img src="images/friends.png" alt="Friends">
+                    <span>Team Up</span>
+                </a>
+            </div>
+            <div class="footer-icon">
+                <a href="tasks.html">
+                    <img src="images/task.png" alt="Tasks">
+                    <span>Tasks</span>
+                </a>
+            </div>
+            <div class="footer-icon">
+                <a href="airdrop.html">
+                    <img src="images/airdrop.png" alt="Airdrop">
+                    <span>Airdrop</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let farmingStarted = false;
+        let farmingTimer;
+        let coinsFarmed = 0;
+        const farmDuration = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
+
+        function startFarming() {
+            if (!farmingStarted) {
+                document.getElementById('farmButton').classList.add('rotate');
+                document.getElementById('farmingMessage').textContent = 'Farming started!';
+                document.getElementById('claimButton').style.display = 'none';
+                farmingStarted = true;
+                startCoinAnimation();
+                startTimer();
+                setTimeout(stopFarming, farmDuration);
+            }
+        }
+
+        function stopFarming() {
+            clearInterval(farmingTimer);
+            document.getElementById('farmButton').classList.remove('rotate');
+            document.getElementById('farmingMessage').textContent = 'Farming ended';
+            document.getElementById('claimButton').style.display = 'inline-block';
+            farmingStarted = false;
+            coinsFarmed = Math.floor(farmDuration / 1000); // Each second equals 1 coin
+            updateCoinsFarmed();
+        }
+
+        function startTimer() {
+            let startTime = Date.now();
+            farmingTimer = setInterval(function() {
+                let elapsedTime = Date.now() - startTime;
+                let remainingTime = farmDuration - elapsedTime;
+                updateTimer(remainingTime);
+            }, 1000);
+        }
+
+        function updateTimer(remainingTime) {
+            let hours = Math.floor(remainingTime / (1000 * 60 * 60));
+            let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+            document.getElementById('timer').textContent = `Time remaining: ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        function startCoinAnimation() {
+            let delay = 0;
+            setInterval(function() {
+                createCoin(delay++);
+            }, 100);
+        }
+
+        function createCoin(delay) {
+            let coin = document.createElement('div');
+            coin.classList.add('coin');
+            coin.style.setProperty('--delay', delay);
+            document.querySelector('.farm-button').appendChild(coin);
+            setTimeout(function() {
+                coin.remove();
+            }, 2000);
+        }
+
+        function updateCoinsFarmed() {
+            document.getElementById('farmingMessage').textContent = `Coins farmed: ${coinsFarmed}`;
+        }
+
+        function claimRewards() {
+            // Add functionality to claim rewards here
+            alert(`You claimed ${coinsFarmed} coins!`);
+            // Reset or redirect as needed
+            coinsFarmed = 0; // Reset coins farmed
+            updateCoinsFarmed();
+        }
+    </script>
+</body>
+</html>

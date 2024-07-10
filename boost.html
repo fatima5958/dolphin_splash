@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boosts - Dolphin Splash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+/* Your existing CSS styles */
+/* Additional CSS for centering and styling the boost cards */
+.boost-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.boost-card {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+    max-width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.boost-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.boost-card h2 {
+    color: #ffcc00;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.boost-card p {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.coming-soon {
+    opacity: 0.5;
+}
+</style>
+<body>
+    <div class="container">
+        <!-- Top Section -->
+        <div class="top-section">
+            <button class="back-button">&#8592;</button>
+            <div class="balance-card">
+                <img src="coin.png" alt="Coin" class="coin-icon">
+                <span class="balance-amount" id="balance-amount">109,985,527</span>
+            </div>
+            <div class="boost-info">
+                <span class="boost-text">How a boost works</span>
+            </div>
+        </div>
+
+        <!-- Boost Section -->
+        <div class="boost-section">
+            <div class="boost-card">
+                <h3>Energy Limit</h3>
+                <div class="boost-details">
+                    <p>Set a limit for the number of taps per day. Resets every 3 hours.</p>
+                    <span id="timer">Taps remaining: 100, Next reset in: 3h 0m 0s</span>
+                </div>
+            </div>
+
+            <div class="boost-card">
+                <h3>Multitap</h3>
+                <div class="boost-details">
+                    <p>Upgrade to increase the value of each tap.</p>
+                    <button id="multitap-upgrade" class="boost-action">Upgrade Multitap</button>
+                </div>
+            </div>
+
+            <div class="boost-card">
+                <h3>Booster</h3>
+                <div class="boost-details coming-soon">
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+
+            <div class="boost-card">
+                <h3>Boost through Crypto</h3>
+                <div class="boost-details coming-soon">
+                    <p>Coming Soon</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tap Button (For testing purposes, can be removed if not needed) -->
+        <div class="tap-section">
+            <button id="tap-button" class="tap-button">Tap to Mine</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer-section">
+        <div class="footer-icons">
+            <div class="footer-icon">
+                <a href="mining.html">
+                    <img src="tap.png" alt="Tap">
+                    <span>Tap Tap</span>
+                </a>
+            </div>
+            <div class="footer-icon">
+                <img src="farm.png" alt="Farm">
+                <span>Farm</span>
+            </div>
+            <div class="footer-icon">
+                <a href="teamup.html">
+                    <img src="friends.png" alt="Friends">
+                    <span>Team Up</span>
+                </a>
+            </div>
+            <div class="footer-icon">
+                <a href="tasks.html">
+                    <img src="task.png" alt="Tasks">
+                    <span>Tasks</span>
+                </a>
+            </div>
+            <div class="footer-icon">
+                <a href="airdrop.html">
+                    <img src="airdrop.png" alt="Airdrop">
+                    <span>Airdrop</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="boost.js"></script>
+</body>
+</html>
